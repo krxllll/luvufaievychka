@@ -33,7 +33,7 @@ function noButton() {
     if (i === 3) {
         const buttons = document.querySelector(".buttons");
         const img = document.createElement("img");
-        img.src = "/img/no.gif";
+        img.src = "img/no.gif";
         buttons.appendChild(img);
         yesButton.remove();
         noButton.remove();
@@ -41,12 +41,12 @@ function noButton() {
         heartSymbol = "💔";
         return;
     }
-    yesButton.style.width = `${yesButton.offsetWidth * 2}px`;
-    yesButton.style.height = `${yesButton.offsetHeight * 2}px`;
-    yesButton.style.fontSize = `${parseInt(window.getComputedStyle(yesButton).fontSize) * 2}px`;
-    noButton.style.width = `${noButton.offsetWidth * 0.5}px`;
-    noButton.style.height = `${noButton.offsetHeight * 0.5}px`;
-    noButton.style.fontSize = `${parseInt(window.getComputedStyle(noButton).fontSize) * 0.5}px`;
+    yesButton.style.width = `${yesButton.offsetWidth * 1.75}px`;
+    yesButton.style.height = `${yesButton.offsetHeight * 1.75}px`;
+    yesButton.style.fontSize = `${parseInt(window.getComputedStyle(yesButton).fontSize) * 1.75}px`;
+    noButton.style.width = `${noButton.offsetWidth * 0.66}px`;
+    noButton.style.height = `${noButton.offsetHeight * 0.66}px`;
+    noButton.style.fontSize = `${parseInt(window.getComputedStyle(noButton).fontSize) * 0.66}px`;
     text.innerHTML = textArr[i];
     i++;
 }
@@ -60,7 +60,7 @@ function yesButton() {
     noButton.remove();
     text.innerHTML = "Ура!  Кохаю тебе 😽";
     const img = document.createElement("img");
-    img.src = "/img/yes.gif";
+    img.src = "img/yes.gif";
     buttons.appendChild(img);
 }
 

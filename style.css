@@ -42,15 +42,16 @@ body {
     align-items: center;
     height: 100vh;
     color: black;
-    font-size: 36px;
+    font-size: 5vmin;
     z-index: 10;
+    text-align: center;
 }
 
 .buttons {
-    display: flex;
-    width: fit-content;
-    justify-content: space-around;
-    align-items: center;
+    /*display: flex;*/
+    /*width: fit-content;*/
+    /*justify-content: space-around;*/
+    /*align-items: center;*/
 }
 
 .buttons > button {
