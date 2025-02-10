@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    font-family: "Marck Script", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 24px;
+    animation: floatUp 4s linear infinite;
+    cursor: default;
+    z-index: 1;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: black;
+    font-size: 36px;
+    z-index: 10;
+}
+
+.buttons {
+    display: flex;
+    width: fit-content;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttons > button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    font-family: "Marck Script", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    min-width: min-content;
+    min-height: min-content;
+}
+
+.yes {
+    background-color: #7C975E;
+}
+
+.no {
+    background-color: #E73636;
+}
