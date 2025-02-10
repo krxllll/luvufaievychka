@@ -33,7 +33,7 @@ function noButton() {
     if (i === 3) {
         const buttons = document.querySelector(".buttons");
         const img = document.createElement("img");
-        img.src = "img/no.gif";
+        img.src = "https://krxllll.github.io/luvufaievychka/img/no.gif";
         buttons.appendChild(img);
         yesButton.remove();
         noButton.remove();
@@ -60,7 +60,7 @@ function yesButton() {
     noButton.remove();
     text.innerHTML = "Ура!  Кохаю тебе 😽";
     const img = document.createElement("img");
-    img.src = "img/yes.gif";
+    img.src = "https://krxllll.github.io/luvufaievychka/img/yes.gif";
     buttons.appendChild(img);
 }
 
