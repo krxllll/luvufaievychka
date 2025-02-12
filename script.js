@@ -1,15 +1,23 @@
-const LOG_URL = "https://script.google.com/macros/s/AKfycbxpJxvoRdEp52b_awF1cJSAnywj5IcWGgJHXL-m1HQg0KEgJ9QdZZlDGcOYdaoZiPY3/exec";
+const LOG_URL = "https://script.google.com/macros/s/AKfycbxCuiIlZmoyLK4Dz3FMmohqa2Yxnj9B7yBjxyaJrCWHi_Pp2RhBt1BPgBkZax4qVYhV/exec";
 
-function logEvent(event, user, extra = {}) {
-    fetch(LOG_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ event, user, extra })
-    })
-        .then(() => console.log("Log sent (CORS bypassed)"))
-        .catch(err => console.error("Fetch error:", err));
+const deviceInfo = {
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    vendor: navigator.vendor
+};
+
+async function logEvent(event, user, extra = {}) {
+    const query = new URLSearchParams({ event, user, extra: JSON.stringify(extra) }).toString();
+    const url = `${LOG_URL}?${query}`;
+
+    try {
+        const response = await fetch(url, { method: "GET" });
+        console.log("Log sent via GET:", response);
+    } catch (err) {
+        console.error("Log error:", err);
+    }
 }
+
 
 let heartSymbol = "💗";
 
@@ -54,7 +62,13 @@ function noButton() {
         heartSymbol = "💔";
         fetch("https://api64.ipify.org?format=json")
             .then(res => res.json())
-            .then(data => logEvent("no", data.ip, { browser: navigator.userAgent }));
+            .then(data => {
+                logEvent("no", data.ip || "unknown", deviceInfo);
+            })
+            .catch(err => {
+                console.error("IP fetch failed:", err);
+                logEvent("no", "unknown", deviceInfo);
+            });
         return;
     }
     yesButton.style.width = `${yesButton.offsetWidth * 1.75}px`;
@@ -80,6 +94,12 @@ function yesButton() {
     buttons.appendChild(img);
     fetch("https://api64.ipify.org?format=json")
         .then(res => res.json())
-        .then(data => logEvent("yes", data.ip, { browser: navigator.userAgent }));
+        .then(data => {
+            logEvent("yes", data.ip || "unknown", deviceInfo);
+        })
+        .catch(err => {
+            console.error("IP fetch failed:", err);
+            logEvent("yes", "unknown", deviceInfo);
+        });
 }
 
